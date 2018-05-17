@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AuthProvider } from '../providers/auth/auth';
+import { URLTOKEN } from './app.urltoken';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AuthProvider } from '../providers/auth/auth';
   providers: [
     StatusBar,
     SplashScreen,
+    {provide:URLTOKEN,useValue:"http://localhost:9008/"},
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider
   ]
