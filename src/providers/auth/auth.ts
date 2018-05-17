@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
+import { LoginModel } from '../../Models/LoginModel';
+import { URLTOKEN } from '../../app/app.urltoken';
 
 /*
   Generated class for the AuthProvider provider.
@@ -9,12 +11,18 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class AuthProvider {
-
-  constructor(public http: HttpClient) {
-    console.log('Hello AuthProvider Provider');
+authApi:string="api/Accounts"
+endPoint:string ;
+  constructor(
+    @Inject(URLTOKEN)apiUrl:string,
+    public http: HttpClient) {
+      this.endPoint=apiUrl+this.authApi;
   }
   
-  Login(){
+  Login(loginModel:LoginModel){
+   return this.http.post(this.endPoint,loginModel,{
+
+    });
 
   }
 
@@ -27,6 +35,6 @@ export class AuthProvider {
   }
 
   ResetPassword(){
-    
+
   }
 }

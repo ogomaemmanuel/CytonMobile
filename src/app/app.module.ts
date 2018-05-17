@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AuthProvider } from '../providers/auth/auth';
 import { URLTOKEN } from './app.urltoken';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { URLTOKEN } from './app.urltoken';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -26,7 +28,8 @@ import { URLTOKEN } from './app.urltoken';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide:URLTOKEN,useValue:"http://localhost:9008/"},
+    HttpClientModule,
+    {provide:URLTOKEN,useValue:"http://localhost:49239/"},
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider
   ]
