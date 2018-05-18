@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginModel } from '../../Models/LoginModel';
+import { Storage } from '@ionic/storage';
+
 
 /**
  * Generated class for the LoginPage page.
@@ -20,9 +22,11 @@ export class LoginPage implements OnInit {
 
   userLoginFormGroup: FormGroup;
   constructor(
+     private storage:Storage,
      public navCtrl: NavController,
      private formBuilder: FormBuilder,
      private auth:AuthProvider,
+     private alertController:AlertController,
      public navParams: NavParams) {
   }
   ngOnInit(): void {
@@ -38,9 +42,22 @@ export class LoginPage implements OnInit {
   login(){
     let user: LoginModel = this.userLoginFormGroup.value;
     this.auth.Login(user).subscribe(resp=>{
-      console.log(resp);
-    },error=>{
+      console.log(JSON.stringify(resp));
+      this.storage.set("loggedInUserDetails",JSON.stringify( resp)).then(()=>{
+        this.navCtrl.setRoot("HomePage",{loggedInUser:resp["email"]});
+      })
 
+    },error=>{
+      if(error.error["InvalidLogin"][0]){
+        let alert= this.alertController.create({
+          message:error.error["InvalidLogin"][0],
+          title:"Login Error",
+          buttons:["ok"]
+        })
+        alert.present();
+         
+      }
+console.log("Login Page, Error During Login",error.error["InvalidLogin"][0]);
     });
 
   }

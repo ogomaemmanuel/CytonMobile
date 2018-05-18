@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, Inject } from '@angular/core';
 import { LoginModel } from '../../Models/LoginModel';
 import { URLTOKEN } from '../../app/app.urltoken';
+import 'rxjs/add/operator/map';
 
 /*
   Generated class for the AuthProvider provider.
@@ -20,9 +21,9 @@ endPoint:string ;
   }
   
   Login(loginModel:LoginModel){
-   return this.http.post(this.endPoint,loginModel,{
+   return this.http.post(this.endPoint+"/login",loginModel,{
 
-    });
+    }).map(resp=>resp);
 
   }
 
