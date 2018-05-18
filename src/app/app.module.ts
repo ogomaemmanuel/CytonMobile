@@ -8,6 +8,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import { URLTOKEN } from './app.urltoken';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { MapProvider } from '../providers/map/map';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { IonicStorageModule } from '@ionic/storage';
     HttpClientModule,
     {provide:URLTOKEN,useValue:"http://localhost:49239/"},
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthProvider
+    AuthProvider,
+    MapProvider
   ]
 })
 export class AppModule {}

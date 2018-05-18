@@ -6,8 +6,24 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
     <ion-title>Home</ion-title>
+
+    <ion-buttons end>
+        <button (click)="goToCartPage()" item-end icon-right ion-button>
+          <ion-icon name="cart"></ion-icon>
+          {{cartTotal}}
+        </button>
+        <button (click)="goToFavoritePage()" ion-button icon-only>
+          <ion-icon name="heart"></ion-icon>
+        </button>
+        <button ion-button icon-only (click)="presentExtraMenuPopover($event)">
+          <ion-icon name="more"></ion-icon>
+        </button>
+      </ion-buttons>
   </ion-navbar>
 
 </ion-header>
