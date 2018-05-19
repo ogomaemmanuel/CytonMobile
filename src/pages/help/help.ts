@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the RideRequestPage page.
+ * Generated class for the HelpPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-ride-request',
-  templateUrl: 'ride-request.html',
+  selector: 'page-help',
+  templateUrl: 'help.html',
 })
-export class RideRequestPage {
+export class HelpPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RideRequestPage');
+    console.log('ionViewDidLoad HelpPage');
   }
 
 }

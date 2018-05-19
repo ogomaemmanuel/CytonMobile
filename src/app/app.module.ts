@@ -9,6 +9,7 @@ import { URLTOKEN } from './app.urltoken';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { MapProvider } from '../providers/map/map';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,14 @@ import { MapProvider } from '../providers/map/map';
       name: '__mydb',
          driverOrder: ['indexeddb', 'sqlite', 'websql']
     }),
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AgmCoreModule.forRoot({
+
+      apiKey: "AIzaSyCnahpwY4LRTYlzEHnER3B_Y8NR1HzmrVE",
+
+      libraries: ["places"]
+
+  })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
