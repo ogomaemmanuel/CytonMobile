@@ -22,7 +22,9 @@ import { AgmCoreModule } from '@agm/core';
       name: '__mydb',
          driverOrder: ['indexeddb', 'sqlite', 'websql']
     }),
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+      tabbarPlacement: "top"
+    }),
     AgmCoreModule.forRoot({
 
       apiKey: "AIzaSyCnahpwY4LRTYlzEHnER3B_Y8NR1HzmrVE",
