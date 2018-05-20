@@ -67,7 +67,8 @@ export class TripRequestPage {
       position: placeLoc,
       title: 'Hello World!'
     });
-    marker.setMap(this.map);
+    //marker.setMap(this.map);
+    this.navCtrl.push("RideRequestConfirmationPage",{destinatioLatitude:placeLoc.lat(),destinatonLongitude:placeLoc.lng()})
   }
 
 }
